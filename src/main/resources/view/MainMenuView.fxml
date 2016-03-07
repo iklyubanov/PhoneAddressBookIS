@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="com.addressbook.controller.MainMenuViewController">
+    <stylesheets>
+        <URL value="@/view/css/mainmenuview.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="377.0" prefWidth="576.0">
+         <top>
+            <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="55.0" prefWidth="366.0" text="Телефонная адресная книга" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="19.0" />
+               </font>
+            </Label>
+         </top>
+         <right>
+            <Pane prefHeight="74.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutY="4.0" text="Поиск:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="52.0" layoutY="2.0" prefHeight="25.0" prefWidth="144.0" promptText="по фамилии">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button onAction="#exit" cancelButton="true" layoutX="98.0" layoutY="276.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="80.0" text="Выход">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </right>
+         <center>
+            <GridPane alignment="CENTER" prefHeight="326.0" prefWidth="426.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="132.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="120.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="127.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="224.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="showAllButton" onAction="#showAll" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="61.0" prefWidth="100.0" text="Просмотр всех контактов" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Просмотр контактов по типу книги" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="61.0" prefWidth="100.0" text="Добавить контакт" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deepSearchButton" onAction="#deepSearch" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="61.0" prefWidth="123.0" text="Расширенный поиск" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

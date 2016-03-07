@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit:junit-gradle:5.0.0-ALPHA'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.junit.gen5.gradle'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    hibernate_version = '5.1.0.Final'
+    junit4Version = '4.12'
+    postgresVersion = '9.4-1202-jdbc4'
+    log4JVersion  = '2.5'
+}
+
+junit5 {
+    version '5.0.0-ALPHA'
+    runJunit4 true
+    matchClassName '.*Test'
+    reportsDir file('build/test-results/junit5/') // this is the default
+    logManager 'org.apache.logging.log4j.jul.LogManager'
+    // requireTag 'fast'
+    excludeTag 'slow'
+}
+
+dependencies {
+    compile "org.hibernate:hibernate-core:${hibernate_version}"
+    compile "org.hibernate:hibernate-java8:${hibernate_version}"
+    compile "org.hibernate:hibernate-entitymanager:${hibernate_version}"
+    compile "org.hibernate:hibernate-testing:${hibernate_version}"
+    compile("org.postgresql:postgresql:${postgresVersion}")
+    compile('javax.el:javax.el-api:3.0.0')
+    compile("org.apache.logging.log4j:log4j-core:${log4JVersion}")
+
+    testCompile("junit:junit:${junit4Version}")
+    testRuntime("org.apache.logging.log4j:log4j-core:${log4JVersion}")
+    testRuntime("org.apache.logging.log4j:log4j-jul:${log4JVersion}")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.11'
+}
