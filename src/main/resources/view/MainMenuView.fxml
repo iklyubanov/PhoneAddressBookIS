@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="com.addressbook.controller.MainMenuViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.addressbook.controller.MainMenuViewController">
     <stylesheets>
         <URL value="@/view/css/mainmenuview.css" />
     </stylesheets>
@@ -34,12 +34,12 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="52.0" layoutY="2.0" prefHeight="25.0" prefWidth="144.0" promptText="по фамилии">
+                  <TextField fx:id="quickSearch" layoutX="52.0" layoutY="2.0" prefHeight="25.0" prefWidth="144.0" promptText="по фамилии">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextField>
-                  <Button onAction="#exit" cancelButton="true" layoutX="98.0" layoutY="276.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="80.0" text="Выход">
+                  <Button cancelButton="true" layoutX="98.0" layoutY="276.0" mnemonicParsing="false" onAction="#exit" prefHeight="33.0" prefWidth="80.0" text="Выход">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -60,7 +60,7 @@
                   <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="showAllButton" onAction="#showAll" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="61.0" prefWidth="100.0" text="Просмотр всех контактов" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="showAllButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showAll" prefHeight="61.0" prefWidth="100.0" text="Просмотр всех контактов" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -75,7 +75,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deepSearchButton" onAction="#deepSearch" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="61.0" prefWidth="123.0" text="Расширенный поиск" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="deepSearchButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#deepSearch" prefHeight="61.0" prefWidth="123.0" text="Расширенный поиск" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>

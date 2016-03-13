@@ -5,30 +5,32 @@
  */
 package com.addressbook.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.addressbook.util.FxControllerHelper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
- *
- * @author ivan
  */
 public class MainMenuViewController implements Initializable {
 
-    @FXML private Button showAllButton;
-    @FXML private Button deepSearchButton;
+    @FXML
+    private Button showAllButton;
+    @FXML
+    private Button deepSearchButton;
+    @FXML
+    private TextField quickSearch;
 
     @FXML
     public void showAll(ActionEvent event) {
@@ -46,7 +48,15 @@ public class MainMenuViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        quickSearch.addEventFilter(KeyEvent.KEY_PRESSED, eventFilter -> {
+            if(KeyCode.ENTER.equals(eventFilter.getCode())) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                FxControllerHelper.changeView(fxmlLoader, "/view/DeepSearchView.fxml", quickSearch, getClass());
+                DeepSearchController searchController = (DeepSearchController) fxmlLoader.getController();
+                searchController.setParamLastNameText(quickSearch.getText());
+                searchController.search();
+            }
+        });
     }
 
     @FXML

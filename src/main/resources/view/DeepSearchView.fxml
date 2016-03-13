@@ -212,7 +212,7 @@
             <Font size="15.0" />
          </font>
       </TitledPane>
-      <Button onAction="#search" layoutX="37.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Поиск" textAlignment="CENTER">
+      <Button onAction="#searchClicked" layoutX="37.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Поиск" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

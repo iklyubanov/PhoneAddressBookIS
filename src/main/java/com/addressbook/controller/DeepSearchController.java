@@ -96,7 +96,11 @@ public class DeepSearchController implements Initializable {
     }
 
     @FXML
-    public void search(ActionEvent event) {
+    public void searchClicked(ActionEvent event) {
+        search();
+    }
+
+    public void search() {
         if(contactsService == null) {
             contactsService = new ContactsServiceImpl();
         }
@@ -120,5 +124,9 @@ public class DeepSearchController implements Initializable {
         searchContact.setMobileTelephone(paramMobileTelephone.getText());
         searchContact.setFax(paramFax.getText());
         searchContact.setEmail(paramEmail.getText());
+    }
+
+    public void setParamLastNameText(String lastName) {
+        this.paramLastName.setText(lastName);
     }
 }
