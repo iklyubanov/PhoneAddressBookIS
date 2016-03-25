@@ -30,6 +30,8 @@ public class MainMenuViewController implements Initializable {
     @FXML
     private Button deepSearchButton;
     @FXML
+    private Button addContactButton;
+    @FXML
     private TextField quickSearch;
 
     @FXML
@@ -63,5 +65,10 @@ public class MainMenuViewController implements Initializable {
     public void deepSearch(ActionEvent event) {
         FxControllerHelper.changeView("/view/DeepSearchView.fxml", deepSearchButton, getClass());
         //FxControllerHelper.changeStageSize(deepSearchButton, 800.0, 640.0);
+    }
+
+    @FXML
+    public void addContact(ActionEvent event) {
+        FxControllerHelper.changeView("/view/AddContactView.fxml", addContactButton, getClass());
     }
 }

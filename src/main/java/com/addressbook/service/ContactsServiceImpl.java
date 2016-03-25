@@ -99,16 +99,16 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public void addNew(Contact contact) {
+    public void addNew(Contact contact) throws Exception{
         em.getTransaction().begin();
-
+        em.persist(contact);
         em.getTransaction().commit();
     }
 
     @Override
     public Contact save(Contact contact) {
         em.getTransaction().begin();
-
+        em.merge(contact);
         em.getTransaction().commit();
         return null;
     }

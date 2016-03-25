@@ -10,7 +10,7 @@ public interface ContactsService {
     List<Contact> findByAddressBook(String addressBookName);
     List<Contact> findByName(String lastName);
     List<Contact> deepSearch(Contact contact);
-    void addNew(Contact contact);
+    void addNew(Contact contact) throws Exception;
     Contact save(Contact contact);
     void delete(Contact contact);
 }

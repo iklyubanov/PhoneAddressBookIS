@@ -5,26 +5,62 @@ DROP TABLE IF EXISTS address_books;
 
 CREATE TABLE address_books
 (
-    id serial NOT NULL PRIMARY KEY,
-    name character varying(255) NOT NULL
-); --ENGINE=INNODB;
+    id integer NOT NULL DEFAULT nextval('address_books_id_seq'::regclass),
+    name character varying(255),
+    CONSTRAINT address_books_pkey PRIMARY KEY (id)
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE address_books
+OWNER TO postgres;
 
 CREATE TABLE contacts
 (
-    id serial NOT NULL PRIMARY KEY,
-    address_book_id BIGINT NOT NULL,
-    first_name character varying(255),
-    last_name character varying(255),
+    id integer NOT NULL DEFAULT nextval('contacts_id_seq'::regclass),
     address_1 character varying(255),
     address_2 character varying(255),
-    town character varying(255),
-    county character varying(255),
     country character varying(255),
-    post_code character varying(10),
-    home_tel character varying(100),
-    work_tel character varying(100),
-    mobile_tel character varying(100),
-    fax character varying(100),
+    county character varying(255),
     email character varying(255),
-    FOREIGN KEY (address_book_id) REFERENCES address_books(id) ON DELETE CASCADE
-); --ENGINE=INNODB;
+    fax character varying(100),
+    first_name character varying(255),
+    home_tel character varying(100),
+    last_name character varying(255),
+    mobile_tel character varying(100),
+    post_code character varying(10),
+    town character varying(255),
+    work_tel character varying(100),
+    addressbook_id integer NOT NULL,
+    CONSTRAINT contacts_pkey PRIMARY KEY (id),
+    CONSTRAINT fkc4n6kqr10nq85sjbyx1d1vio9 FOREIGN KEY (addressbook_id)
+    REFERENCES address_books (id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE contacts
+OWNER TO postgres;
+
+-- DROP SEQUENCE address_books_id_seq;
+
+CREATE SEQUENCE address_books_id_seq
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+START 4
+CACHE 1;
+ALTER TABLE address_books_id_seq
+OWNER TO postgres;
+
+-- DROP SEQUENCE contacts_id_seq;
+
+CREATE SEQUENCE contacts_id_seq
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+ALTER TABLE contacts_id_seq
+OWNER TO postgres;

@@ -6,8 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "address_books")
-@NamedQuery(name = "AddressBook.findByName",
-        query = "select ab from AddressBook ab where ab.name = :name")
+@NamedQueries({@NamedQuery(name = "AddressBook.findByName",
+        query = "select ab from AddressBook ab where ab.name = :name"),
+        @NamedQuery(name = "AddressBook.findAll",
+                query = "select ab from AddressBook ab")})
 public class AddressBook implements Serializable{
     @Id
     @SequenceGenerator(name="address_books_id_seq",
