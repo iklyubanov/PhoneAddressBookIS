@@ -33,11 +33,15 @@ public class App {
             AddressBook addressBook = query.getSingleResult();
             TypedQuery<Contact> contactQuery =
                     em.createNamedQuery("Contact.findByAddressBook", Contact.class);
+            contactQuery.setParameter("addressBookName", addressBook.getName());
             List<Contact> contacts = contactQuery.getResultList();
 
             em.getTransaction().commit();
         } catch (Exception e) {
             logger.error(e);
+            if(em != null) {
+                em.getTransaction().rollback();
+            }
         } finally {
             if(em != null) {
                 em.close();

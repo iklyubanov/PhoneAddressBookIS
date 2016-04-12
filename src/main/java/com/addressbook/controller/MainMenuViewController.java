@@ -8,7 +8,6 @@ package com.addressbook.controller;
 import com.addressbook.util.FxControllerHelper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,10 +50,10 @@ public class MainMenuViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         quickSearch.addEventFilter(KeyEvent.KEY_PRESSED, eventFilter -> {
-            if(KeyCode.ENTER.equals(eventFilter.getCode())) {
+            if (KeyCode.ENTER.equals(eventFilter.getCode())) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 FxControllerHelper.changeView(fxmlLoader, "/view/DeepSearchView.fxml", quickSearch, getClass());
-                DeepSearchController searchController = (DeepSearchController) fxmlLoader.getController();
+                DeepSearchController searchController = fxmlLoader.getController();
                 searchController.setParamLastNameText(quickSearch.getText());
                 searchController.search();
             }

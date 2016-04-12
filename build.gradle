@@ -37,14 +37,18 @@ junit5 {
 }
 
 dependencies {
+    //ORM
     compile "org.hibernate:hibernate-core:${hibernate_version}"
     compile "org.hibernate:hibernate-java8:${hibernate_version}"
     compile "org.hibernate:hibernate-entitymanager:${hibernate_version}"
     compile "org.hibernate:hibernate-testing:${hibernate_version}"
+    //зависимость для hibernate для настройки подключения к базе postgresql
     compile("org.postgresql:postgresql:${postgresVersion}")
+    //зависимость для hibernate
     compile('javax.el:javax.el-api:3.0.0')
+    //для логгирования
     compile("org.apache.logging.log4j:log4j-core:${log4JVersion}")
-
+    //для тестов
     testCompile("junit:junit:${junit4Version}")
     testRuntime("org.apache.logging.log4j:log4j-core:${log4JVersion}")
     testRuntime("org.apache.logging.log4j:log4j-jul:${log4JVersion}")
