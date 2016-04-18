@@ -33,7 +33,7 @@
         </Button>
         <BorderPane layoutX="37.0" layoutY="399.0" prefHeight="277.0" prefWidth="526.0">
             <top>
-                <TableView fx:id="tableView" prefHeight="263.0" prefWidth="480.0" BorderPane.alignment="CENTER">
+                <TableView fx:id="tableView" onMouseClicked="#mouseClickedOnTable" prefHeight="263.0" prefWidth="480.0" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="contactId" prefWidth="34.0" text="Id" />
                         <TableColumn fx:id="contactAddressBookName" prefWidth="44.0" text="Адресная книга" />
@@ -225,12 +225,12 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button disable="true" mnemonicParsing="false" text="Редактировать">
+            <Button fx:id="editButton" disable="true" mnemonicParsing="false" text="Редактировать" >
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button disable="true" mnemonicParsing="false" text="Удалить">
+            <Button fx:id="deleteButton" disable="true" mnemonicParsing="false" text="Удалить">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

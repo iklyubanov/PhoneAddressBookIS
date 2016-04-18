@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -31,6 +32,12 @@ public class DeepSearchController implements Initializable {
 
     @FXML
     private Button backButton;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button editButton;
     @FXML
     private TableView<Contact> tableView;
     @FXML private TableColumn<Contact, String> contactId;
@@ -66,6 +73,7 @@ public class DeepSearchController implements Initializable {
 
     private ContactsService contactsService;
     private Contact searchContact = new Contact();
+    private Contact selectedContact;
 
     /**
      * Initializes the controller class.
@@ -93,6 +101,16 @@ public class DeepSearchController implements Initializable {
     @FXML
     public void back(ActionEvent event) {
         FxControllerHelper.changeView("/view/MainMenuView.fxml", backButton, getClass());
+    }
+
+    @FXML
+    public void mouseClickedOnTable(MouseEvent event) {
+        TableView<Contact> table = (TableView<Contact>)event.getSource();
+        if(table != null) {
+            selectedContact = table.getSelectionModel().getSelectedItem();
+            deleteButton.setDisable(false);
+            editButton.setDisable(false);
+        }
     }
 
     @FXML
