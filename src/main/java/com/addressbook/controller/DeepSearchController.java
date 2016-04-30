@@ -122,29 +122,84 @@ public class DeepSearchController implements Initializable {
         if(contactsService == null) {
             contactsService = new ContactsServiceImpl();
         }
+        if (!tableView.getItems().isEmpty()) {
+            tableView.getItems().clear();
+        }
 
-        bindParamsToContact();
+        bindParamsToContact(searchContact);
         List<Contact> result = contactsService.deepSearch(searchContact);
         tableView.getItems().setAll(result);
     }
 
-    private void bindParamsToContact() {
-        searchContact.setFirstName(paramFirstName.getText());
-        searchContact.setLastName(paramLastName.getText());
-        searchContact.setAddress1(paramAddress1.getText());
-        searchContact.setAddress2(paramAddress2.getText());
-        searchContact.setTown(paramTown.getText());
-        searchContact.setCounty(paramCounty.getText());
-        searchContact.setCountry(paramCountry.getText());
-        searchContact.setPostCode(paramPostCode.getText());
-        searchContact.setHomeTelephone(paramHomeTelephone.getText());
-        searchContact.setWorkTelephone(paramWorkTelephone.getText());
-        searchContact.setMobileTelephone(paramMobileTelephone.getText());
-        searchContact.setFax(paramFax.getText());
-        searchContact.setEmail(paramEmail.getText());
+    private void bindParamsToContact(Contact contact) {
+        contact.setFirstName(paramFirstName.getText());
+        contact.setLastName(paramLastName.getText());
+        contact.setAddress1(paramAddress1.getText());
+        contact.setAddress2(paramAddress2.getText());
+        contact.setTown(paramTown.getText());
+        contact.setCounty(paramCounty.getText());
+        contact.setCountry(paramCountry.getText());
+        contact.setPostCode(paramPostCode.getText());
+        contact.setHomeTelephone(paramHomeTelephone.getText());
+        contact.setWorkTelephone(paramWorkTelephone.getText());
+        contact.setMobileTelephone(paramMobileTelephone.getText());
+        contact.setFax(paramFax.getText());
+        contact.setEmail(paramEmail.getText());
+    }
+
+    private void bindContanctToParams(Contact contact) {
+        paramFirstName.setText(contact.getFirstName());
+        paramLastName.setText(contact.getLastName());
+        paramAddress1.setText(contact.getAddress1());
+        paramAddress2.setText(contact.getAddress2());
+        paramTown.setText(contact.getTown());
+        paramCounty.setText(contact.getCounty());
+        paramCountry.setText(contact.getCountry());
+        paramPostCode.setText(contact.getPostCode());
+        paramHomeTelephone.setText(contact.getHomeTelephone());
+        paramWorkTelephone.setText(contact.getWorkTelephone());
+        paramMobileTelephone.setText(contact.getMobileTelephone());
+        paramFax.setText(contact.getFax());
+        paramEmail.setText(contact.getEmail());
     }
 
     public void setParamLastNameText(String lastName) {
         this.paramLastName.setText(lastName);
+    }
+
+    @FXML
+    public void edit(ActionEvent actionEvent) {
+        bindContanctToParams(selectedContact);
+        saveButton.setDisable(false);
+        editButton.setDisable(true);
+    }
+
+    @FXML
+    public void delete(ActionEvent actionEvent) {
+        tableView.getSelectionModel().clearSelection();
+        contactsService.delete(selectedContact);
+        disableEditButtons();
+        search();
+    }
+
+    @FXML
+    public void save(ActionEvent actionEvent) {
+        bindParamsToContact(selectedContact);
+        contactsService.save(selectedContact);
+        disableEditButtons();
+        tableView.getSelectionModel().clearSelection();
+        search();
+    }
+
+    private void disableEditButtons() {
+        deleteButton.setDisable(true);
+        saveButton.setDisable(true);
+        editButton.setDisable(true);
+    }
+
+    @FXML
+    public void clear(ActionEvent actionEvent) {
+        searchContact = new Contact();
+        bindContanctToParams(searchContact);
     }
 }

@@ -116,7 +116,7 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public void delete(Contact contact) {
         em.getTransaction().begin();
-
+        em.remove(contact);
         em.getTransaction().commit();
     }
 }

@@ -220,22 +220,27 @@
       </Button>
       <ButtonBar layoutX="37.0" layoutY="669.0" prefHeight="40.0" prefWidth="419.0">
         <buttons>
-          <Button disable="true" mnemonicParsing="false" text="Сохранить">
+          <Button fx:id="saveButton" disable="true" mnemonicParsing="false" onAction="#save" text="Сохранить">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="editButton" disable="true" mnemonicParsing="false" text="Редактировать" >
+            <Button fx:id="editButton" disable="true" mnemonicParsing="false" onAction="#edit" text="Редактировать">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="deleteButton" disable="true" mnemonicParsing="false" text="Удалить">
+            <Button fx:id="deleteButton" disable="true" mnemonicParsing="false" onAction="#delete" text="Удалить">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
         </buttons>
       </ButtonBar>
+      <Button layoutX="437.0" layoutY="360.0" mnemonicParsing="false" onAction="#clear" prefHeight="31.0" prefWidth="126.0" text="Очистить" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
